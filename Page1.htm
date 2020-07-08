@@ -1,0 +1,38 @@
+<HTML>
+	<HEAD>
+		<TITLE>ActiveX 샘플</TITLE>
+		<META CHARSET=EUC-KR>
+		<SCRIPT>
+			if(typeof(ActiveXObject) != 'function') { /* IE에만 있는 요소가 있는지 확인해서 IE인지 아닌지 판단. */
+				alert('인터넷 익스플로러로 실행해주세요~^^;');
+			}
+		</SCRIPT>
+	</HEAD>
+
+	<BODY>
+		<p>액티브X 콘트롤 샘플입니다. 번호를 입력하고 #을 누르면 입력한 비밀번호를 보여줍니다. *을 누르면 입력한 비밀번호를 지웁니다.</p>
+		
+		<OBJECT ID="NumberPad1" WIDTH=123 HEIGHT=173
+		 CLASSID="CLSID:1ED2F341-04F5-409F-912F-F5AC294A358B">
+			<PARAM NAME="_ExtentX" VALUE="3228">
+			<PARAM NAME="_ExtentY" VALUE="4577">
+			<PARAM NAME="PIN" VALUE="">
+		</OBJECT>
+		
+		<form method=post id=pinform>
+			<input id=pinInput type=hidden name=pin value="">
+		</form>
+		
+		<!-- 샵을 누르면 실행한다. -->
+		<SCRIPT FOR=NumberPad1 EVENT=SetPassword(pin)>
+			alert("입력한 번호: " + pin);
+			
+			/*
+				'웹서버에 올릴 것이면 이런 식으로 PIN을 폼 데이타에 넣는다. '
+				
+				document.getElementById('pinInput').value = pin;
+				document.getElementById('pinform').submit();
+			*/
+		</SCRIPT>
+	</BODY>
+</HTML>
